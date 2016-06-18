@@ -111,7 +111,7 @@ let SearchBar = React.createClass({
 
 let App = React.createClass({
 	getInitialState: function() {
-		return {loading: false};
+		return {loading: true};
 	},
 
 	getImagesFromGiphy: function(query, page_number, callback) {
@@ -146,8 +146,12 @@ let App = React.createClass({
 			}
 			this.forceUpdate();
 		});
-
-		this.loadNextImages();
+		
+		// preload the loading gif before anything else
+		fetch('https://media.giphy.com/media/IgQ8E05Dpg2ze/giphy.gif')
+		.then(() => {
+			this.loadNextImages();
+		});
 	},
 
 	render: function() {

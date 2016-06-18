@@ -64,18 +64,22 @@ body {
 	margin: 10px 0;
 	display: inline-block;
 	overflow: hidden;
-	opacity: 0;
-	transition: opacity 1s;
-
-	&.loaded {
-		opacity: 1;
-	}
+	background-image: url('https://media.giphy.com/media/IgQ8E05Dpg2ze/giphy.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
 
 	.image-background {
 		background-size: cover;
 		background-position: center;
+		opacity: 0;
 		width: 100%;
 		height: 100%;
+		transition: opacity 1s;
+	}
+	
+	&.loaded .image-background {
+		opacity: 1;
 	}
 
 	img {
