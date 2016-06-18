@@ -10,7 +10,7 @@ var SASS_DIR = path.resolve(__dirname, 'src/sass');
 var BUILD_DIR = PUBLIC_DIR + '/build';
 
 var webpack_config = {
-	entry: JS_DIR + '/app.jsx',
+	entry: ['whatwg-fetch', (JS_DIR + '/app.jsx')],
 	output: {
 		path: BUILD_DIR,
 		filename: 'bundle.js'

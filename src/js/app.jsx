@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 
+// fetch polyfill
+import 'whatwg-fetch';
+
 // Loaded with sass-loader
 require('../sass/style.scss');
 
