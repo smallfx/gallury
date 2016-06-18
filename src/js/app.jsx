@@ -14,14 +14,11 @@ function state_reducer(old_state, action) {
 			let new_page_number = old_state.page_number + 1;
 			let new_array = old_state.image_URLs.concat(action.new_URLs);
 			return Object.assign({}, old_state, {page_number: new_page_number, image_URLs: new_array});
-			break;
 		case 'new_query':
 			if (action.query == old_state.search_query) return old_state;
 			return {search_query: action.query, page_number: 0, image_URLs: []};
-			break;
 		default:
 			return old_state;
-			break;
 	}
 }
 
