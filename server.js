@@ -29,7 +29,16 @@ var webpack_config = {
 				loaders: ['style','css','autoprefixer','sass']
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin({minimize: true}),
+		new webpack.DefinePlugin({
+			'process.env': {
+				// This has effect on the react lib size
+				'NODE_ENV': JSON.stringify('production'),
+			}
+		})
+	]
 };
 
 /* watch for source code changes and build them */
@@ -46,9 +55,6 @@ compiler.watch({},function(err, stats){
 				console.error(e);
 			});
 		} else {
-			json_stats.warnings.forEach(function(w) {
-				console.warn(w);
-			});
 			console.log('Successfully recompiled');
 		}
 	}
