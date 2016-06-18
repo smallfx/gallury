@@ -118,14 +118,14 @@ let App = React.createClass({
 	},
 
 	getImagesFromGiphy: function(query, page_number, callback) {
-		let offset = (page_number * 24);
+		let offset = (page_number * 12);
 
 		// Access Giphy search w/ public development key
-		fetch('http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=' + query + '&limit=24&offset=' + offset)
+		fetch('http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=' + query + '&limit=12&offset=' + offset)
 		.then((response) => {
 			response.json().then((response_json) => {
 				let image_URLs = response_json.data.map((d) => {
-					return d.images.original.url;
+					return d.images.fixed_height_downsampled.url;
 				});
 				callback(image_URLs);
 			});
